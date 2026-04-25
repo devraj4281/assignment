@@ -166,30 +166,36 @@ export function Header() {
 
               <div className="flex-1 overflow-y-auto px-6 pb-10 space-y-8">
                 <div className="flex flex-col gap-2">
-                  {navLinks.map((link) => (
-                    <div key={link.name} className="contents">
-                      {!link.hasMegaMenu && (
-                        <a href={link.href} onClick={(e) => handleClick(e, link.href)} className="flex flex-row items-center gap-4 p-4 bg-slate-50 border border-slate-100 rounded-2xl active:bg-blue-50 transition-colors">
-                          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-blue-600 shadow-sm">
-                            <link.icon size={16} />
-                          </div>
-                          <span className="text-[13px] font-bold text-slate-900">{link.name}</span>
-                        </a>
-                      )}
+                  {navLinks.map((link) => {
+                    const Icon = link.icon!;
+                    return (
+                      <div key={link.name} className="contents">
+                        {!link.hasMegaMenu && (
+                          <a href={link.href} onClick={(e) => handleClick(e, link.href)} className="flex flex-row items-center gap-4 p-4 bg-slate-50 border border-slate-100 rounded-2xl active:bg-blue-50 transition-colors">
+                            <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-blue-600 shadow-sm">
+                              <Icon size={16} />
+                            </div>
+                            <span className="text-[13px] font-bold text-slate-900">{link.name}</span>
+                          </a>
+                        )}
 
-                      {link.hasMegaMenu && link.megaMenuContent?.map(sub => (
-                        <a key={sub.title} href={sub.href} onClick={(e) => handleClick(e, sub.href)} className="flex flex-col gap-2 p-4 bg-slate-50 border border-slate-100 rounded-2xl active:bg-blue-50 transition-colors">
-                          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-blue-600 shadow-sm">
-                            <sub.icon size={16} />
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-[13px] font-bold text-slate-900 leading-tight">{sub.title}</span>
-                            <span className="text-[9px] text-slate-500 font-medium leading-tight mt-1">{sub.microCopy}</span>
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                  ))}
+                        {link.hasMegaMenu && link.megaMenuContent?.map(sub => {
+                          const SubIcon = sub.icon;
+                          return (
+                            <a key={sub.title} href={sub.href} onClick={(e) => handleClick(e, sub.href)} className="flex flex-row items-center gap-4 p-4 bg-slate-50 border border-slate-100 rounded-2xl active:bg-blue-50 transition-colors">
+                              <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-blue-600 shadow-sm">
+                                <SubIcon size={16} />
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="text-[13px] font-bold text-slate-900 leading-tight">{sub.title}</span>
+                                <span className="text-[9px] text-slate-500 font-medium leading-tight mt-1">{sub.microCopy}</span>
+                              </div>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <button className="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold shadow-xl shadow-blue-500/20 active:scale-95 transition-all">
