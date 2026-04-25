@@ -39,8 +39,8 @@ export function HowItWorksSection() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section id="how-it-works" className="py-24 bg-white border-y border-[#e5e7eb]">
-      <div className="relative container mx-auto px-6 max-w-4xl" ref={containerRef}>
+    <section id="how-it-works" className="relative py-24 bg-white border-y border-[#e5e7eb]" ref={containerRef}>
+      <div className="relative container mx-auto px-6 max-w-4xl">
         <div className="text-center mb-20">
           <span className="text-[#1a73e8] font-bold text-[11px] tracking-[1.5px] uppercase mb-4 block">Process</span>
           <h2 className="font-playfair text-3xl md:text-[42px] font-bold text-[#121c28] mb-6 leading-tight">
